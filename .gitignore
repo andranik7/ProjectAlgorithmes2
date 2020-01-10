@@ -1,0 +1,6 @@
+out/
+.idea/
+.classpath/
+.project/
+*/.DS_STORE/
+.DS_STORE
