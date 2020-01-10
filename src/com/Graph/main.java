@@ -24,6 +24,8 @@ public class main {
         graph.addEgde(0, 6, 5);
         graph.printGraph();
         
+
         System.out.println(graph.getVertexNeighbors("A_1970"));
+
     }
 }
