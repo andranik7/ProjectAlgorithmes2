@@ -21,7 +21,7 @@ public class WeightedGraph implements GraphWeightedInterface {
         verticesList = liste;
         //initialize adjacency lists for all the vertices
         
-        for (int i = 0; i <vertices ; i++) {
+        for (int i = 0; i < vertices ; i++) {
             adjacencylist[i] = new LinkedList<>(); // adding the edges
         }
     }
@@ -30,9 +30,9 @@ public class WeightedGraph implements GraphWeightedInterface {
     @Override
     public void addEgde(int indexSource, int indexDestination, int weight) {
         Edge edgeFromSource = new Edge(indexSource, indexDestination, weight);
-        Edge edgeFromDestination = new Edge(indexDestination, indexSource, weight);
+        //Edge edgeFromDestination = new Edge(indexDestination, indexSource, weight);
         adjacencylist[indexSource].add(edgeFromSource);
-        adjacencylist[indexDestination].add(edgeFromDestination);
+        //adjacencylist[indexDestination].add(edgeFromDestination);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class WeightedGraph implements GraphWeightedInterface {
             LinkedList<Edge> list = adjacencylist[i];
             for (int j = 0; j <list.size() ; j++) {
                 System.out.println("vertex-" + i + " "+ verticesList.get(i).getStop_name()+ " is connected to " +
-                        list.get(j).destination + " " +verticesList.get(j).getStop_name() + " with weight " +  list.get(j).weight);
+                        list.get(j).destination + " " + verticesList.get(j).getStop_name() + " with weight " +  list.get(j).weight);
             }
         }
     }
@@ -49,7 +49,7 @@ public class WeightedGraph implements GraphWeightedInterface {
     // fonction pour renvoyer l'index du vertex à partir de son id
     public int getVertexById(String id) {
     	// looping verticeslist to get it
-    	for(int i=0; i<verticesList.size(); i++) {
+    	for(int i = 0; i < verticesList.size(); i++) {
     		    		if(verticesList.get(i).getStop_id().equals(id)) {
     			return i;
     		}

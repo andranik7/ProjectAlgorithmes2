@@ -64,8 +64,8 @@ public class ParserJSON {
 	}
 
 	public void getAllEdges(WeightedGraph graph) throws FileNotFoundException, JSONException {
-		String prevArret = "";
-		String arret = "";
+		String prevArret;
+		String arret;
 		int vertex1;
 		int vertex2;
 		//JSON parser object to parse read file
