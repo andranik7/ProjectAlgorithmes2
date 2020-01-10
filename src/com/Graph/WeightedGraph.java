@@ -8,21 +8,20 @@ public class WeightedGraph implements GraphWeightedInterface {
     int vertices;
     // both are related
     LinkedList<Edge>[] adjacencylist; // corresponds to edges list
-    List<Vertex> verticesList = new ArrayList<>(); // corresponds to vertices
+    List<Vertex> verticesList; // corresponds to vertices
 
     /**
      * Create new Graph object.
      */
-    public WeightedGraph(List<String> liste) {
+    public WeightedGraph(List<Vertex> liste) {
         // creation of adjecency list
         this.vertices = liste.size();
 
         adjacencylist = new LinkedList[vertices];
+        verticesList = liste;
         //initialize adjacency lists for all the vertices
         
         for (int i = 0; i <vertices ; i++) {
-            Vertex v = new Vertex(liste.get(i), 48.122, 2.3912, i);
-            verticesList.add(v); // adding the vertex
             adjacencylist[i] = new LinkedList<>(); // adding the edges
         }
     }
@@ -45,6 +44,17 @@ public class WeightedGraph implements GraphWeightedInterface {
                         list.get(j).destination + " " +verticesList.get(j).getStop_name() + " with weight " +  list.get(j).weight);
             }
         }
+    }
+    
+    // fonction pour renvoyer l'index du vertex à partir de son id
+    public int getVertexById(String id) {
+    	// looping verticeslist to get it
+    	for(int i=0; i<verticesList.size(); i++) {
+    		    		if(verticesList.get(i).getStop_id().equals(id)) {
+    			return i;
+    		}
+    	}
+		return 0;
     }
 
 }
