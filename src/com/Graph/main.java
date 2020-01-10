@@ -12,7 +12,7 @@ public class main {
         
         ParserJSON parser = new ParserJSON();
         System.out.println(parser.getAllStations());
-        List<String> listeStations = parser.getAllStations();
+        List<Vertex> listeStations = parser.getAllStations();
         
         
         // Instanciation of graph by passing the type of the class
@@ -22,5 +22,8 @@ public class main {
         graph.addEgde(0, 2, 5);
         graph.printGraph();
         
+
+        System.out.println(graph.getVertexById("1795"));
+
     }
 }
