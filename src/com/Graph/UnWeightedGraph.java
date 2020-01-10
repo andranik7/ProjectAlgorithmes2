@@ -20,7 +20,7 @@ public class UnWeightedGraph implements GraphUnWeightedInterface {
         adjacencylist = new LinkedList[vertices];
         //initialize adjacency lists for all the vertices
         for (int i = 0; i <vertices ; i++) {
-            Vertex v = new Vertex("Rue de la Pompe", 48.122, 2.3912, i);
+            Vertex v = new Vertex("Rue de la Pompe", 48.122, 2.3912, "i");
             verticesList.add(v); // adding the vertex
             adjacencylist[i] = new LinkedList<>(); // adding the edges
         }

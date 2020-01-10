@@ -46,7 +46,7 @@ public class ParserJSON {
 	                	double lat = Double.parseDouble(station.getString("lat"));
 	                	double lng = Double.parseDouble(station.getString("lng"));
 	                	Vertex v = new Vertex(station.getString("nom"), lat, lng, key);
-	                	
+	                	System.out.println(key);
 	                	listeVertexStations.add(v);
 	                  }
 	                 
