@@ -21,5 +21,6 @@ public class main {
         graph.addEgde(0, 1, 10);
         graph.addEgde(0, 2, 5);
         graph.printGraph();
+        
     }
 }
