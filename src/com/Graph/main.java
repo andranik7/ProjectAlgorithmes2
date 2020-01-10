@@ -20,8 +20,10 @@ public class main {
         
         graph.addEgde(0, 1, 10);
         graph.addEgde(0, 2, 5);
+        graph.addEgde(0, 5, 5);
+        graph.addEgde(0, 6, 5);
         graph.printGraph();
         
-        System.out.println(graph.getVertexById("1795"));
+        System.out.println(graph.getVertexNeighbors("A_1970"));
     }
 }
