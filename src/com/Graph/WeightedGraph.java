@@ -50,11 +50,29 @@ public class WeightedGraph implements GraphWeightedInterface {
     public int getVertexById(String id) {
     	// looping verticeslist to get it
     	for(int i=0; i<verticesList.size(); i++) {
-    		    		if(verticesList.get(i).getStop_id().equals(id)) {
+    	    if(verticesList.get(i).getStop_id().equals(id)) {
     			return i;
     		}
     	}
 		return 0;
+    }
+
+    // fonction pour renvoyer l'index du vertex à partir de son id
+
+    public List<Integer> getVertexNeighbors(String id) {
+        List<Integer> listeNeighbors = new ArrayList<>();
+        // looping verticeslist to get it
+        for(int i=0; i<verticesList.size(); i++) {
+            //System.out.println(verticesList.get(i).getStop_id());
+            if(verticesList.get(i).getStop_id().equals(id)) {
+                for(int j=0; j < adjacencylist[i].size(); j++) {
+                    listeNeighbors.add(adjacencylist[i].get(j).getDestination());
+                }
+                return listeNeighbors;
+            }
+        }
+        return null;
+
     }
 
 }
