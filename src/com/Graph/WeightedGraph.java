@@ -13,14 +13,15 @@ public class WeightedGraph implements GraphWeightedInterface {
     /**
      * Create new Graph object.
      */
-    public WeightedGraph(int vertices) {
+    public WeightedGraph(List<String> liste) {
         // creation of adjecency list
-        this.vertices = vertices;
+        this.vertices = liste.size();
 
         adjacencylist = new LinkedList[vertices];
         //initialize adjacency lists for all the vertices
+        
         for (int i = 0; i <vertices ; i++) {
-            Vertex v = new Vertex("Rue de la Pompe", 48.122, 2.3912, i);
+            Vertex v = new Vertex(liste.get(i), 48.122, 2.3912, i);
             verticesList.add(v); // adding the vertex
             adjacencylist[i] = new LinkedList<>(); // adding the edges
         }

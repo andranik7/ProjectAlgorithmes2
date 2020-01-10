@@ -14,6 +14,10 @@ import java.util.ArrayList;
 
 public class ParserJSON {
 	public ParserJSON () throws FileNotFoundException {
+
+	}
+	
+	public List<String> getAllStations() throws FileNotFoundException{
 		List<String> listeStations = new ArrayList<>(); 
 		//JSON parser object to parse read file
 		
@@ -45,12 +49,14 @@ public class ParserJSON {
         	        
 	            }
 	        }
-	        System.out.println(listeStations);
+	        //System.out.println(listeStations);
 	        
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		return listeStations;
 	}
 
 }
