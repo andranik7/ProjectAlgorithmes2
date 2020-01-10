@@ -12,10 +12,10 @@ public class Edge {
     }
 
     public int getSource() {
-        return source;
+    	return source;
     }
-
+    
     public int getDestination() {
-        return destination;
+    	return destination;
     }
 }

@@ -33,5 +33,12 @@ public class main {
 
         System.out.println(bfs.shortestPath(1698,1696));
 
+        graph.addEgde(0, 5, 5);
+        graph.addEgde(0, 6, 5);
+        graph.printGraph();
+        
+
+        System.out.println(graph.getVertexNeighbors("A_1970"));
+
     }
 }
