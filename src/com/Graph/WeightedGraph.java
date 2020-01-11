@@ -57,6 +57,7 @@ public class WeightedGraph implements GraphWeightedInterface {
 		return 0;
     }
 
+
     // fonction pour renvoyer l'index du vertex à partir de son id
 
     public List<String> getVertexNeighbors(String id) {
@@ -74,5 +75,6 @@ public class WeightedGraph implements GraphWeightedInterface {
         return null;
 
     }
+
 
 }

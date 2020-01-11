@@ -1,10 +1,10 @@
 package com.Graph;
 
 public class Vertex {
-    String stop_name;
-    double stop_lat;
-    double stop_lon;
-    String id;
+    private String stop_name;
+    private double stop_lat;
+    private double stop_lon;
+    public String id;
 
 
     public Vertex(String stop_name, double stop_lat, double stop_lon, String id) {

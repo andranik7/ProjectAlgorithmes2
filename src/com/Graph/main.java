@@ -5,9 +5,7 @@ import java.util.List;
 
 public class main {
 
-    private static Object Vertex;
-
-    public static void main(String[] args) throws FileNotFoundException{
+    public main(String[] args) throws FileNotFoundException{
 
         
         ParserJSON parser = new ParserJSON();

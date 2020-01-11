@@ -18,4 +18,8 @@ public class Edge {
     public int getDestination() {
     	return destination;
     }
+    
+    public int getWeight() {
+    	return weight;
+    }
 }
