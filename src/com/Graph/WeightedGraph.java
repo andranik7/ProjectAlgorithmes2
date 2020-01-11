@@ -73,16 +73,5 @@ public class WeightedGraph implements GraphWeightedInterface {
     	return null;
 		
     }
-    
-    public Edge getEdgeByVertices(Vertex src, Vertex dest)
-    {
-    	List<String> neighbors = getVertexNeighbors(src.id);
-    	if(!neighbors.contains(dest.id)) return null;
-    	
-    	for(String uid : neighbors) {
-    		if(verticesList.get(getVertexById(uid)) == dest) return tamer;
-    	}
-    	
-    }
 
 }
