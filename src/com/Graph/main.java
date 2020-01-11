@@ -13,7 +13,7 @@ public class main {
         parser.getAllEdges(graph);
         graph.printGraph();
         System.out.println("----- path -----");
-        List<Edge> path = graph.AStarPathFinder(verticesList.get(3),verticesList.get(5));
+        List<Edge> path = graph.AStarPathFinder(verticesList.get(3),verticesList.get(35));
         for (int i = path.size()-1; i >= 0 ; i--){
             System.out.println(path.get(i).getSource().getStop_name() + " id " + path.get(i).getSource().id +
                     " to " + path.get(i).getDest().getStop_name() + " id " + path.get(i).getDest().id

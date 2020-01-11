@@ -107,8 +107,8 @@ public class WeightedGraph {
     }
 
     //here to sort the priorityqueue
-    public void quickSort(List<Vertex> list, int begin, int end,Vertex dest) {
-        if (list.get(begin).isLessTo(list.get(end),dest)) {
+    public void quickSort(List<Vertex> list, int begin, int end, Vertex dest) {
+        if (begin < end) {
             int partitionIndex = partition(list, begin, end, dest);
 
             quickSort(list, begin, partitionIndex-1, dest);
@@ -122,7 +122,7 @@ public class WeightedGraph {
         int i = (begin-1);
 
         for (int j = begin; j < end; j++) {
-            if (list.get(j).isLessTo(pivot, dest)) {
+            if (list.get(j).isLessThan(pivot, dest)) {
                 i++;
                 Vertex swapTemp = list.get(i);
                 list.set(i,list.get(j));

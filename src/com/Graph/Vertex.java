@@ -47,7 +47,7 @@ public class Vertex {
                 Math.pow(Math.abs(stop_lon - dest.getStop_lon()),2));
     }
 
-    public boolean isLessTo (Vertex comp, Vertex dest) {
+    public boolean isLessThan (Vertex comp, Vertex dest) {
         if ((this.heuritic + this.distanceTo(dest)) - (comp.getHeuritic() + comp.distanceTo(dest)) < 0)
             return true;
         else
