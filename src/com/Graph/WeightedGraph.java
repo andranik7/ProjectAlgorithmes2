@@ -44,27 +44,30 @@ public class WeightedGraph {
     	return listNeighbors;
     }
 
-    public List<Edge> AStarPathFinder(Vertex src, Vertex dest) {
-        List<Vertex> priorityQueue = new ArrayList<>();
-        List<Vertex> explored = new ArrayList<>();
-        List<Vertex> path = new ArrayList<>();
-        src.setHeuritic(0);
-        Vertex prevVertex = src;
+    //dijkstra algorithm
+//    public List<Edge> AStarPathFinder(Vertex src, Vertex dest) {
+//        List<Vertex> priorityQueue = new ArrayList<>();
+//        List<Vertex> explored = new ArrayList<>();
+//        List<Vertex> path = new ArrayList<>();
+//        src.setHeuritic(0);
+//        Vertex prevVertex = src;
+//
+//        do{
+//            for (Vertex vertex : getVertexNeighbors(prevVertex)) {
+//                if (vertex.equals(dest)){
+//                    return path;
+//                }
+//                if (!priorityQueue.contains(vertex)) {
+//                    vertex.setHeuritic(prevVertex.getHeuritic() + prevVertex.distanceTo(vertex));
+//                    priorityQueue.add(vertex);
+//                }
+//            }
+//        } while (!priorityQueue.isEmpty());
+//
+//    }
 
-        do{
-            for (Vertex vertex : getVertexNeighbors(prevVertex)) {
-                if (vertex.equals(dest)){
-                    return path;
-                }
-                if (!priorityQueue.contains(vertex)) {
-                    vertex.setHeuritic(prevVertex.getHeuritic() + prevVertex.distanceTo(vertex));
-                    priorityQueue.add(vertex);
-                }
-            }
-        } while (!priorityQueue.isEmpty());
-
-    }
-
+    //here to sort the priorityqueue
+    //TODO : modify to handle ArrayList of Vertex instead of int
     private void quickSort(int arr[], int begin, int end) {
         if (begin < end) {
             int partitionIndex = partition(arr, begin, end);
@@ -74,6 +77,7 @@ public class WeightedGraph {
         }
     }
 
+    //used by quicksort
     private int partition(int arr[], int begin, int end) {
         int pivot = arr[end];
         int i = (begin-1);
