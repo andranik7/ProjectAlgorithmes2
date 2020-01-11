@@ -18,6 +18,19 @@ public class main {
         
         graph.addEgde(0, 1, 10);
         graph.addEgde(0, 2, 5);
+        graph.addEgde(2, 3, 5);
+        graph.addEgde(4, 5, 5);
+        graph.addEgde(5, 6, 5);
+
+       /* graph.printGraph();*/
+        
+
+        /*System.out.println(graph.getVertexById("1795"));*/
+
+        AdjacencyDiGraph bfs = new AdjacencyDiGraph(graph);
+
+        System.out.println(bfs.shortestPath(1698,1696));
+
         graph.addEgde(0, 5, 5);
         graph.addEgde(0, 6, 5);
         graph.printGraph();
