@@ -4,92 +4,42 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
 
-public class WeightedGraph implements GraphWeightedInterface {
-    int vertices;
-    // both are related
-    LinkedList<Edge>[] adjacencylist; // corresponds to edges list
-    List<Vertex> verticesList; // corresponds to vertices
+public class WeightedGraph {
+    List<Vertex> verticesList;
+    List<Edge> edgesList;
 
-    /**
-     * Create new Graph object.
-     */
-    public WeightedGraph(List<Vertex> liste) {
-        // creation of adjecency list
-        this.vertices = liste.size();
-
-        adjacencylist = new LinkedList[vertices];
-        verticesList = liste;
-        //initialize adjacency lists for all the vertices
-        
-        for (int i = 0; i < vertices ; i++) {
-            adjacencylist[i] = new LinkedList<>(); // adding the edges
-        }
+    public WeightedGraph(List<Vertex> vertices, List<Edge> edges) {
+        this.edgesList = edges;
+        this.verticesList = vertices;
     }
 
-
-    @Override
-    public void addEgde(int indexSource, int indexDestination, int weight) {
-        Edge edgeFromSource = new Edge(indexSource, indexDestination, weight);
-        //Edge edgeFromDestination = new Edge(indexDestination, indexSource, weight);
-        adjacencylist[indexSource].add(edgeFromSource);
-        //adjacencylist[indexDestination].add(edgeFromDestination);
+    public void addEdge(Vertex sourceVertex, Vertex destVertex, double weight) {
+        edgesList.add(new Edge(sourceVertex, destVertex, weight));
     }
 
-    @Override
     public void printGraph(){
-        for (int i = 0; i <vertices ; i++) {
-            LinkedList<Edge> list = adjacencylist[i];
-            for (int j = 0; j <list.size() ; j++) {
-                System.out.println("vertex-" + i + " "+ verticesList.get(i).getStop_name()+ " is connected to " +
-                        list.get(j).destination + " " + verticesList.get(j).getStop_name() + " with weight " +  list.get(j).weight);
-            }
+        for (int i = 0; i < edgesList.size(); i++){
+            System.out.println(edgesList.get(i).getSource().stop_name + " id " + edgesList.get(i).getSource().id +
+                    " to " + edgesList.get(i).getDest().stop_name + " id " + edgesList.get(i).getDest().id);
         }
     }
-    
-    // fonction pour renvoyer l'index du vertex à partir de son id
-    public int getVertexById(String id) {
-    	// looping verticeslist to get it
+
+    public Vertex getVertexById(String id) {
     	for(int i = 0; i < verticesList.size(); i++) {
-    		    		if(verticesList.get(i).getStop_id().equals(id)) {
-    			return i;
+    	    if(verticesList.get(i).id.equals(id)) {
+    			return verticesList.get(i);
     		}
     	}
-		return 0;
-    }
-    
-    // fonction pour renvoyer l'index du vertex à partir de son id
-    public List<Integer> getVertexNeighbors(String id) {
-    	List<Integer> listeNeighbors = new ArrayList<>();
-    	// looping verticeslist to get it
-    	for(int i=0; i<verticesList.size(); i++) {
-    		//System.out.println(verticesList.get(i).getStop_id());
-    		if(verticesList.get(i).getStop_id().equals(id)) {
-    			for(int j=0; j < adjacencylist[i].size(); j++) {
-    				listeNeighbors.add(adjacencylist[i].get(j).getDestination());
-    			}
-    			return listeNeighbors;
-    		}
-    	}
-    	return null;
-		
+		return null;
     }
 
-    // fonction pour renvoyer l'index du vertex à partir de son id
+    public List<Vertex> getVertexNeighbors(Vertex vertex) {
+    	List<Vertex> listNeighbors = new ArrayList<>();
 
-    public List<Integer> getVertexNeighbors(String id) {
-        List<Integer> listeNeighbors = new ArrayList<>();
-        // looping verticeslist to get it
-        for(int i=0; i<verticesList.size(); i++) {
-            //System.out.println(verticesList.get(i).getStop_id());
-            if(verticesList.get(i).getStop_id().equals(id)) {
-                for(int j=0; j < adjacencylist[i].size(); j++) {
-                    listeNeighbors.add(adjacencylist[i].get(j).getDestination());
-                }
-                return listeNeighbors;
-            }
+    	for(int i = 0; i < edgesList.size(); i++){
+    	    if (edgesList.get(i).getSource() == vertex)
+    	        listNeighbors.add(edgesList.get(i).getDest());
         }
-        return null;
-
+    	return listNeighbors;
     }
-
 }
