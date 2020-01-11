@@ -18,11 +18,11 @@ public class main {
         // Instanciation of graph by passing the type of the class
         WeightedGraph graph = new WeightedGraph(listeStations);
         
-        graph.addEgde(0, 1, 10);
-        graph.addEgde(0, 2, 5);
-        graph.addEgde(2, 3, 5);
-        graph.addEgde(4, 5, 5);
-        graph.addEgde(5, 6, 5);
+        graph.addEgde(0, 1, 1);
+        graph.addEgde(0, 2, 1);
+        graph.addEgde(2, 3,1);
+        graph.addEgde(4, 5, 1);
+        graph.addEgde(5, 6, 1);
 
        /* graph.printGraph();*/
         
@@ -31,14 +31,11 @@ public class main {
 
         AdjacencyDiGraph bfs = new AdjacencyDiGraph(graph);
 
-        System.out.println(bfs.shortestPath(1698,1696));
+        System.out.println(bfs.shortestPath("1698","1696"));
 
-        graph.addEgde(0, 5, 5);
+        /*graph.addEgde(0, 5, 5);
         graph.addEgde(0, 6, 5);
-        graph.printGraph();
-        
-
-        System.out.println(graph.getVertexNeighbors("A_1970"));
+        graph.printGraph();*/
 
     }
 }

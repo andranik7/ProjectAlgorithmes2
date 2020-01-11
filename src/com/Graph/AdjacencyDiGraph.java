@@ -37,12 +37,12 @@ import java.util.ArrayList;
         }*/
 
 
-        public  List<Integer> shortestPath(String src, String dest) {
+        public  List<String> shortestPath(String src, String dest) {
 
             List<String> path = new ArrayList<String>();
             path.add(dest) ;
 
-            Map<String, String > parent = BFS(list, src) ;
+            Map<String, String > parent = BFS( src) ;
 
             String precedent = parent.get(dest);
             while(precedent != null) {
@@ -54,7 +54,7 @@ import java.util.ArrayList;
 
         List<Vertex> list ;
 
-        public Map<String, String> BFS(List<Vertex> list, int id) {
+        public Map<String, String> BFS( String id) {
 
             Map<String,String> parent = new HashMap<String, String>();
 
@@ -65,26 +65,23 @@ import java.util.ArrayList;
             priorityQueue.add(id);
 
 
-
             while(!priorityQueue.isEmpty()) {
                 int n=0 ;
                 String  actual = priorityQueue.get(n);
 
+                List<String> adjacents = graph.getVertexNeighbors(String.valueOf(actual)) ;
 
-                List<Integer> adjacents = graph.getVertexNeighbors(String.valueOf(id)) ;
-                List<String> newList = new ArrayList<String>(adjacents.size()) ;
-                for (Integer myInt : adjacents) {
-                    newList.add(String.valueOf(myInt));
 
-                    for (String ver : newList ) {
+                    for (String ver : adjacents ) {
                     if (!explored.contains(ver)) {
                         parent.put(ver,actual);
                         priorityQueue.add(ver);
                         explored.add(ver);
                     }
+                        n++ ;
                 }
                 priorityQueue.remove(actual);
-                n++ ;
+
             }
             return parent ;
         }
