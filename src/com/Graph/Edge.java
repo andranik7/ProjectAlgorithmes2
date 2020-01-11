@@ -10,7 +10,7 @@ public class Edge {
         this.destination = destination;
         this.weight = weight;
     }
-    
+
     public int getSource() {
     	return source;
     }

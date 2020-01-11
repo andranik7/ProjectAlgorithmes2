@@ -15,74 +15,36 @@ import java.util.ArrayList;
         private Map<Edge, Vertex> edgeToSrc = new HashMap<Edge, Vertex>();
         private Map<Edge, Vertex> edgeToDest = new HashMap<Edge, Vertex>();
         private Map<String, Vertex> nameToVertex = new HashMap<String, Vertex>();
+        public WeightedGraph graph;
 
-        public AdjacencyDiGraph() {
+        public AdjacencyDiGraph(WeightedGraph graph) {
+            this.graph = graph;
         }
 
-        public void addVertex(Vertex v) {
-            if (!vertices.contains(v)) {
-                vertices.add(v);
-                vertexToEdges.put(v, new ArrayList<Edge>());
-            }
-        }
-
-        public List<Vertex> getVertices() {
-            return new ArrayList<Vertex>(vertices);
-        }
-
-        public List<Edge> getEdges() {
-            return new ArrayList<Edge>(edges);
-        }
-
-        public List<Vertex> getAdjacentVertices(Vertex src) {
-            List<Vertex> res = new ArrayList<Vertex>();
-            for (Edge e : vertexToEdges.get(src)) {
-                res.add(edgeToDest.get(e));
-            }
-            return res;
-        }
-
-        public void nameVertex(String name, Vertex v) {
-            nameToVertex.put(name, v);
-        }
 
         public Vertex getVertexByName(String name) {
             return nameToVertex.get(name);
         }
 
-        // should use java.util.Optional
-        public String getNameOrNullByVertex(Vertex v) {
-            for (Map.Entry<String, Vertex> e : nameToVertex.entrySet()) {
-                if (e.getValue().equals(v)) {
-                    return e.getKey();
-                }
-            }
-            return null;
-        }
 
-        public List<String> getNames() {
-            return new ArrayList<String>(nameToVertex.keySet());
-        }
-
-
-        public boolean areConnected(Vertex src, Vertex dest) {
-            Map<Vertex, Vertex> parent = BFS(src);
+        /*public boolean areConnected(Integer src, Integer dest) {
+            Map<Integer, Integer> parent = BFS(list, src);
             return parent.get(dest) != null;
         }
 
         public boolean areConnected(String src, String dest) {
             return areConnected(getVertexByName(src), getVertexByName(dest));
-        }
+        }*/
 
 
-        public  List<Vertex> shortestPath(Vertex src, Vertex dest) {
+        public  List<Integer> shortestPath(String src, String dest) {
 
-            List<Vertex> path = new ArrayList<Vertex>();
+            List<String> path = new ArrayList<String>();
             path.add(dest) ;
 
-            Map<Vertex, Vertex > parent = BFS(src) ;
+            Map<String, String > parent = BFS(list, src) ;
 
-            Vertex precedent = parent.get(dest);
+            String precedent = parent.get(dest);
             while(precedent != null) {
                 path.add(0, precedent);
                 precedent = parent.get(precedent);
@@ -90,22 +52,31 @@ import java.util.ArrayList;
             return path;
         }
 
+        List<Vertex> list ;
 
-        public Map<Vertex, Vertex> BFS(Vertex src) {
+        public Map<String, String> BFS(List<Vertex> list, int id) {
 
-            Map<Vertex,Vertex> parent = new HashMap<Vertex, Vertex>();
+            Map<String,String> parent = new HashMap<String, String>();
 
-            List<Vertex> explored = new ArrayList<Vertex>();
-            explored.add(src);
+            List<String> explored = new ArrayList<String>();
+            explored.add(id);
 
-            List<Vertex> priorityQueue = new ArrayList<Vertex>();
-            priorityQueue.add(src);
+            List<String> priorityQueue = new ArrayList<String>();
+            priorityQueue.add(id);
+
+
 
             while(!priorityQueue.isEmpty()) {
                 int n=0 ;
-                Vertex actual = priorityQueue.get(n);
+                String  actual = priorityQueue.get(n);
 
-                for (Vertex ver : getAdjacentVertices(actual)) {
+
+                List<Integer> adjacents = graph.getVertexNeighbors(String.valueOf(id)) ;
+                List<String> newList = new ArrayList<String>(adjacents.size()) ;
+                for (Integer myInt : adjacents) {
+                    newList.add(String.valueOf(myInt));
+
+                    for (String ver : newList ) {
                     if (!explored.contains(ver)) {
                         parent.put(ver,actual);
                         priorityQueue.add(ver);
@@ -118,9 +89,9 @@ import java.util.ArrayList;
             return parent ;
         }
 
-        public List<Vertex> shortestPath(String src, String dest) {
+        /*public List<Vertex> shortestPath(String src, String dest) {
             return shortestPath(getVertexByName(src), getVertexByName(dest));
-        }
+        }*/
 
 
 }

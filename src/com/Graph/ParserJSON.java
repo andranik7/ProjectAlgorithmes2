@@ -34,26 +34,28 @@ public class ParserJSON {
 
 			@SuppressWarnings("unchecked")
 			Iterator<String> keys = stations.keys();
-			while(keys.hasNext()) {
-				String key = keys.next();
-				if (stations.get(key) instanceof JSONObject) {
-					//System.out.println(key + " " + stations.get(key));
 
-					JSONObject station = stations.getJSONObject(key);
-					//System.out.println(station.getString("nom"));
-					if(!listeNomsStations.contains(station.getString("nom"))) {
-						listeNomsStations.add(station.getString("nom"));
-						double lat = Double.parseDouble(station.getString("lat"));
-						double lng = Double.parseDouble(station.getString("lng"));
-						Vertex v = new Vertex(station.getString("nom"), lat, lng, key);
+	        while(keys.hasNext()) {
+	            String key = keys.next();
+	            if (stations.get(key) instanceof JSONObject) {
+	                  //System.out.println(key + " " + stations.get(key));
 
-						listeVertexStations.add(v);
-					}
-
-
-				}
-			}
-			//System.out.println(listeNomsStations);
+	          	      JSONObject station = stations.getJSONObject(key);
+	          	      //System.out.println(station.getString("nom"));
+	                  if(!listeNomsStations.contains(station.getString("nom"))) {
+	                	listeNomsStations.add(station.getString("nom"));
+	                	double lat = Double.parseDouble(station.getString("lat"));
+	                	double lng = Double.parseDouble(station.getString("lng"));
+	                	Vertex v = new Vertex(station.getString("nom"), lat, lng, key);
+	                	System.out.println(key);
+	                	listeVertexStations.add(v);
+	                  }
+	                 
+        	        
+	            }
+	        }
+	        //System.out.println(listeNomsStations);
+	        
 
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
