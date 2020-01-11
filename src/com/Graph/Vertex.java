@@ -15,7 +15,7 @@ public class Vertex {
         this.stop_lat = stop_lat;
         this.stop_lon = stop_lon;
         this.heuritic = 0;
-        this.id = id; // id corresponds to the position in verticesList
+        this.id = id;
     }
 
     public double getStop_lat() {
@@ -48,11 +48,19 @@ public class Vertex {
     }
 
     public boolean isLessTo (Vertex comp, Vertex dest) {
-        if (heuritic + this.distanceTo(dest) - comp.getHeuritic() + comp.distanceTo(dest) > 0)
+        if ((this.heuritic + this.distanceTo(dest)) - (comp.getHeuritic() + comp.distanceTo(dest)) < 0)
             return true;
         else
             return false;
     }
+
+//    public boolean isIn(Vertex[] arr){
+//        for (int i = 0; i < arr.length; i++){
+//            if (arr[i] == this)
+//                return true;
+//        }
+//        return false;
+//    }
 
 }
 
