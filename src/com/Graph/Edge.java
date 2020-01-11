@@ -19,7 +19,7 @@ public class Edge {
     	return destination;
     }
     
-    public int getWeight() {
+    public double getWeight() {
     	return weight;
     }
 }

@@ -19,8 +19,9 @@ public class WeightedGraph {
 
     public void printGraph(){
         for (int i = 0; i < edgesList.size(); i++){
-            System.out.println(edgesList.get(i).getSource().stop_name + " id " + edgesList.get(i).getSource().id +
-                    " to " + edgesList.get(i).getDest().stop_name + " id " + edgesList.get(i).getDest().id);
+            System.out.println(edgesList.get(i).getSource().getStop_name() + " id " + edgesList.get(i).getSource().id +
+                    " to " + edgesList.get(i).getDest().getStop_name() + " id " + edgesList.get(i).getDest().id
+                    + " weight " + edgesList.get(i).getWeight());
         }
     }
 
@@ -41,5 +42,56 @@ public class WeightedGraph {
     	        listNeighbors.add(edgesList.get(i).getDest());
         }
     	return listNeighbors;
+    }
+
+    public List<Edge> AStarPathFinder(Vertex src, Vertex dest) {
+        List<Vertex> priorityQueue = new ArrayList<>();
+        List<Vertex> explored = new ArrayList<>();
+        List<Vertex> path = new ArrayList<>();
+        src.setHeuritic(0);
+        Vertex prevVertex = src;
+
+        do{
+            for (Vertex vertex : getVertexNeighbors(prevVertex)) {
+                if (vertex.equals(dest)){
+                    return path;
+                }
+                if (!priorityQueue.contains(vertex)) {
+                    vertex.setHeuritic(prevVertex.getHeuritic() + prevVertex.distanceTo(vertex));
+                    priorityQueue.add(vertex);
+                }
+            }
+        } while (!priorityQueue.isEmpty());
+
+    }
+
+    private void quickSort(int arr[], int begin, int end) {
+        if (begin < end) {
+            int partitionIndex = partition(arr, begin, end);
+
+            quickSort(arr, begin, partitionIndex-1);
+            quickSort(arr, partitionIndex+1, end);
+        }
+    }
+
+    private int partition(int arr[], int begin, int end) {
+        int pivot = arr[end];
+        int i = (begin-1);
+
+        for (int j = begin; j < end; j++) {
+            if (arr[j] <= pivot) {
+                i++;
+
+                int swapTemp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = swapTemp;
+            }
+        }
+        int swapTemp = arr[i+1];
+
+        arr[i+1] = arr[end];
+        arr[end] = swapTemp;
+
+        return i+1;
     }
 }

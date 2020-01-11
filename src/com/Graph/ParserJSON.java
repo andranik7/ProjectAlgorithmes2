@@ -46,6 +46,7 @@ public class ParserJSON {
 	public void getAllEdges(WeightedGraph graph) throws FileNotFoundException, JSONException {
 		Vertex vertexSource;
 		Vertex vertexDest;
+		double weight;
 		JSONArray routes = openFile().getJSONArray("routes");
 
 
@@ -55,7 +56,8 @@ public class ParserJSON {
 			for (int j = 1; j < stops.length(); j++) {
 				vertexSource = graph.getVertexById(stops.getString(j - 1));
 				vertexDest = graph.getVertexById(stops.getString(j));
-				graph.addEdge(vertexSource, vertexDest, 10.0);
+				weight = vertexSource.distanceTo(vertexDest);
+				graph.addEdge(vertexSource, vertexDest, weight);
 			}
 		}
 	}
