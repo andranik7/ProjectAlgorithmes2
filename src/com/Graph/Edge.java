@@ -18,4 +18,8 @@ public class Edge {
     public Vertex getDest() {
     	return destination;
     }
+    
+    public int getWeight() {
+    	return weight;
+    }
 }
