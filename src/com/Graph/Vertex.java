@@ -2,7 +2,7 @@ package com.Graph;
 
 import java.util.Comparator;
 
-public class Vertex {
+public class Vertex implements VertexInterface{
     private String stop_name;
     private double stop_lat;
     private double stop_lon;
