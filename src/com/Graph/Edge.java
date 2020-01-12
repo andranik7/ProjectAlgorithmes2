@@ -1,25 +1,25 @@
 package com.Graph;
 
 public class Edge {
-    int source;
-    int destination;
-    int weight;
+    Vertex source;
+    Vertex destination;
+    double weight;
 
-    public Edge(int source, int destination, int weight) {
+    public Edge(Vertex source, Vertex destination, double weight) {
         this.source = source;
         this.destination = destination;
         this.weight = weight;
     }
 
-    public int getSource() {
+    public Vertex getSource() {
     	return source;
     }
     
-    public int getDestination() {
+    public Vertex getDest() {
     	return destination;
     }
     
-    public int getWeight() {
+    public double getWeight() {
     	return weight;
     }
 }
