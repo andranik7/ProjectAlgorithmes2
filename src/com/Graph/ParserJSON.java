@@ -97,6 +97,5 @@ public class ParserJSON {
 		}
 		graph.printGraph();
 	}
-
 }
 
