@@ -39,6 +39,8 @@ public class Vertex implements VertexInterface{
     }
 
     public double getHeuritic() {
+        if (this == null)
+            return 0;
         return heuritic;
     }
 

@@ -15,7 +15,11 @@ public class main {
         System.out.println("----- path -----");
         List<Edge> path = graph.AStarPathFinder(verticesList.get(3),verticesList.get(35));
         for (int i = path.size()-1; i >= 0 ; i--){
-            System.out.println(path.get(i).getSource().getStop_name() + " id " + path.get(i).getSource().id +
+            System.out.println(path.get(i)
+                    .getSource().
+                            getStop_name() + " id " +
+                    path.get(i).
+                            getSource().id +
                     " to " + path.get(i).getDest().getStop_name() + " id " + path.get(i).getDest().id
                     + " weight " + path.get(i).getWeight());
         }

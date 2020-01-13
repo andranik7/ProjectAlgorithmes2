@@ -66,10 +66,8 @@ public class WeightedGraph {
         List<Vertex> explored = new ArrayList<>();
         List<Edge> path = new ArrayList<>();
         List<List<Vertex>> parents = new ArrayList<>();
-        List<Vertex> list = new ArrayList<>();
-        list.add(null);
-        list.add(src);
-        parents.add(list);
+        Vertex originVertex = new Vertex("originVertex",0,0,"origin");
+        parents.add(loadParents(originVertex,src));
         Vertex currentVertex = src;
         Vertex nextVertex;
         priorityQueue.add(src);
@@ -80,11 +78,9 @@ public class WeightedGraph {
             explored.add(currentVertex);
             for (Vertex vertex : getVertexNeighbors(currentVertex)) {
                 if (vertex == dest){
-                    list.set(0,currentVertex);
-                    list.set(1,dest);
-                    parents.add(list);
+                    parents.add(loadParents(currentVertex,dest));
                     nextVertex = vertex;
-                    while (currentVertex != null){
+                    while (currentVertex != originVertex){
                         path.add(getEdge(currentVertex,nextVertex));
                         nextVertex = currentVertex;
                         currentVertex = parentFinder(currentVertex, parents);
@@ -92,18 +88,24 @@ public class WeightedGraph {
                     return path;
                 }
                 if (!priorityQueue.contains(vertex) && !explored.contains(vertex)) {
-                    vertex.setHeuritic(currentVertex.getHeuritic() + currentVertex.distanceTo(vertex));
+                    vertex.setHeuritic(parentFinder(vertex,parents).getHeuritic() +
+                            parentFinder(vertex,parents).distanceTo(vertex));
                     priorityQueue.add(vertex);
                 }
             }
             quickSort(priorityQueue,0,priorityQueue.size()-1,dest);
             nextVertex = priorityQueue.get(priorityQueue.size()-1);
-            list.set(0,currentVertex);
-            list.set(1,nextVertex);
-            parents.add(list);
+            parents.add(loadParents(currentVertex,nextVertex));
             currentVertex = nextVertex;
         } while (!priorityQueue.isEmpty());
         return null;
+    }
+
+    private List<Vertex> loadParents(Vertex v1, Vertex v2){
+        List<Vertex> ret = new ArrayList<>();
+        ret.add(v1);
+        ret.add(v2);
+        return ret;
     }
 
     //here to sort the priorityqueue
