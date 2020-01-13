@@ -1,6 +1,6 @@
 package com.Graph;
 
-public class Edge {
+public class Edge implements EdgeInterface{
     Vertex source;
     Vertex destination;
     double weight;

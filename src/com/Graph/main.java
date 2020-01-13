@@ -1,4 +1,5 @@
 package com.Graph;
+
 import org.json.JSONException;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class main {
         List<Vertex> verticesList = parser.getAllStations();
         WeightedGraph graph = new WeightedGraph(verticesList, new ArrayList<>());
         parser.getAllEdges(graph);
+
         //graph.printGraph();
         System.out.println("----- path -----");
         List<Edge> path = graph.AStarPathFinder(verticesList.get(3),verticesList.get(35));
@@ -20,5 +22,11 @@ public class main {
                     " to " + path.get(i).getDest().getStop_name() + " id " + path.get(i).getDest().id
                     + " weight " + path.get(i).getWeight());
         }
+ 
+        graph.printGraph();
+        
+        Dijkstra dijk = new Dijkstra(graph);
+        
+        dijk.dijkstra(graph.getVertexById("A_1643"),graph.getVertexById("4009379"));
     }
 }
