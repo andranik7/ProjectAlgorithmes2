@@ -1,3 +1,4 @@
+package com.Graph;
 
 interface EdgeInterface {
     public Vertex getSource();

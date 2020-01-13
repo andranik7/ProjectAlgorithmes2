@@ -1,3 +1,5 @@
+package com.Graph;
+
 public class Edge implements EdgeInterface{
     Vertex source;
     Vertex destination;
