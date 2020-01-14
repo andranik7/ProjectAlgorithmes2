@@ -30,8 +30,8 @@ public class Vertex implements VertexInterface{
     }
 
     public double distanceTo(Vertex dest){
-        return Math.sqrt(Math.pow(Math.abs(stop_lat - dest.getStop_lat()),2) +
-                Math.pow(Math.abs(stop_lon - dest.getStop_lon()),2));
+        return Math.sqrt(Math.pow(stop_lat - dest.getStop_lat(),2) +
+                Math.pow(stop_lon - dest.getStop_lon(),2));
     }
     
     public String toString() {
