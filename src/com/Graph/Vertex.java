@@ -1,3 +1,4 @@
+package com.Graph;
 
 public class Vertex implements VertexInterface{
     private String stop_name;

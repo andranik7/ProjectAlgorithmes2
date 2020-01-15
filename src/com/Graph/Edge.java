@@ -1,7 +1,9 @@
+package com.Graph;
 public class Edge implements EdgeInterface{
     Vertex source;
     Vertex destination;
     double weight;
+    int nbShortestPass;
 
     public Edge(Vertex source, Vertex destination, double weight) {
         this.source = source;
