@@ -1,5 +1,3 @@
-package com.Graph;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -30,7 +28,6 @@ public class ParserJSON {
 		List<Vertex> verticesList = new ArrayList<>();
 		JSONObject stations = openFile().getJSONObject("stations");
 
-		@SuppressWarnings("unchecked")
 		Iterator<String> key = stations.keys();
 		while(key.hasNext()) {
 			String id = key.next();

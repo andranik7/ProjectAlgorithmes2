@@ -1,10 +1,8 @@
-package com.Graph;
 
 public class Vertex implements VertexInterface{
     private String stop_name;
     private double stop_lat;
     private double stop_lon;
-    private double heuritic;
     public String id;
 
 
@@ -12,7 +10,6 @@ public class Vertex implements VertexInterface{
         this.stop_name = stop_name;
         this.stop_lat = stop_lat;
         this.stop_lon = stop_lon;
-        this.heuritic = 0;
         this.id = id;
     }
 
@@ -32,35 +29,13 @@ public class Vertex implements VertexInterface{
     	return id;
     }
 
-    public void setHeuritic(double heuritic) {
-        this.heuritic = heuritic;
-    }
-
-    public double getHeuritic() {
-        if (this == null)
-            return 0;
-        return heuritic;
-    }
-
     public double distanceTo(Vertex dest){
-        return Math.sqrt(Math.pow(Math.abs(stop_lat - dest.getStop_lat()),2) +
-                Math.pow(Math.abs(stop_lon - dest.getStop_lon()),2));
+        return Math.sqrt(Math.pow(stop_lat - dest.getStop_lat(),2) +
+                Math.pow(stop_lon - dest.getStop_lon(),2));
     }
-
-    public boolean isLessThan (Vertex comp, Vertex dest) {
-        if ((this.heuritic + this.distanceTo(dest)) - (comp.getHeuritic() + comp.distanceTo(dest)) < 0)
-            return true;
-        else
-            return false;
+    
+    public String toString() {
+    	return stop_name;
     }
-
-//    public boolean isIn(Vertex[] arr){
-//        for (int i = 0; i < arr.length; i++){
-//            if (arr[i] == this)
-//                return true;
-//        }
-//        return false;
-//    }
-
 }
 
