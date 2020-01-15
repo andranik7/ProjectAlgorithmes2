@@ -54,33 +54,29 @@ public class Dijkstra {
             // adding the vertex whose weight is being calculated
             passed.add(currentVertex);
             
-            processNeighbours(currentVertex);
-        }
-        return weightsFromSrc;
-    }
+            double weight = -1;
+            double newWeight = -1;
 
-    private void processNeighbours(Vertex currentVertex) {
-        double weight = -1;
-        double newWeight = -1;
-
-    	// Process all the neighbours of the passed vertex
-        for (Vertex vertex : graph.getVertexNeighbors(currentVertex)) {
-        	
-            // If current neighbour hasn't already been processed
-            if (!passed.contains(vertex)) {
-            	weight = currentVertex.distanceTo(vertex);
-            	newWeight = weightsFromSrc.get(currentVertex) + weight;
-                // If new distance is less
-                if (newWeight < weightsFromSrc.get(vertex))
-                {                	    
-                	weightsFromSrc.put(vertex, newWeight);
-                	parents.put(vertex, currentVertex);                
-                	
-                    // Add the current neighbour to the priotity queue
-                    pqVertices.add(new Node(vertex, weightsFromSrc.get(vertex)));    	
+        	// Process all the neighbours of the passed vertex
+            for (Vertex vertex : graph.getVertexNeighbors(currentVertex)) {
+            	
+                // If current neighbour hasn't already been processed
+                if (!passed.contains(vertex)) {
+                	weight = currentVertex.distanceTo(vertex);
+                	newWeight = weightsFromSrc.get(currentVertex) + weight;
+                    // If new distance is less
+                    if (newWeight < weightsFromSrc.get(vertex))
+                    {                	    
+                    	weightsFromSrc.put(vertex, newWeight);
+                    	parents.put(vertex, currentVertex);                
+                    	
+                        // Add the current neighbour to the priotity queue
+                        pqVertices.add(new Node(vertex, weightsFromSrc.get(vertex)));    	
+                    }
                 }
             }
         }
+        return weightsFromSrc;
     }
     
     public Pair<Double, LinkedList<Vertex>> getWeightedPath(Vertex src, Vertex dest){
