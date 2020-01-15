@@ -1,3 +1,5 @@
+package com.Graph;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -28,6 +30,9 @@ public class Dijkstra {
         this.graph = graph;
     }
 
+    // TODO : when going through the graph, increment the "nbSortestPaths" parameter in Edge for cluster recognition
+    // TODO : then implement a graph recognizer algorithm, then print those.
+    // TODO : to achieve the counting of nbShortestPath we need to find the shortest path between each pair of vertices
     public HashMap<Vertex, Double> dijkstra(Vertex src)
     {
         // Initialize the weightsFromSrc map (set all weights on MAX_VALUE)
@@ -98,7 +103,6 @@ public class Dijkstra {
     }
     
     public double calculateDiameter() {
-    	
     	HashMap<Vertex, Double> vertexToWeights = new HashMap<Vertex, Double>();
     	List<Double> minWeights = new ArrayList<Double>();
     	
@@ -109,8 +113,8 @@ public class Dijkstra {
     		TreeMap<Vertex, Double> sortedMap = new TreeMap<Vertex, Double>(vComp);
     		sortedMap.putAll(vertexToWeights);
     		sortedMap.remove(v);
-    		if(sortedMap.get(sortedMap.firstKey()) != Double.MAX_VALUE) minWeights.add(sortedMap.get(sortedMap.firstKey()));
-    		
+    		if(sortedMap.get(sortedMap.firstKey()) != Double.MAX_VALUE)
+    		    minWeights.add(sortedMap.get(sortedMap.firstKey()));
     	}
     	Collections.sort(minWeights);
     	return minWeights.get(minWeights.size()-1);
