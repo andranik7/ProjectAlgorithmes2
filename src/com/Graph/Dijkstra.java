@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.TreeMap;
 
-import javafx.util.Pair;
 
 public class Dijkstra {
 	private int nbVertices;
